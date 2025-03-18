@@ -27,3 +27,39 @@ function moverCarrossel(direcao) {
 function verDetalhes(produtoId) {
   alert("Você clicou para ver os detalhes do " + produtoId);
 }
+
+document.querySelector("form").addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const nome_completo = document.getElementById("nome").value;
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+  const confirmarSenha = document.getElementById("confirmar-senha").value;
+
+  if (senha !== confirmarSenha) {
+    alert("As senhas não coincidem. Por favor, tente novamente.");
+    return;
+  }
+
+  try {
+    const response = await fetch("https://seu-backend.com/api/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ nome_completo, email, senha }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Cadastro realizado com sucesso!");
+      window.location.href = "login.html";
+    } else {
+      alert("Erro: " + data.message);
+    }
+  } catch (error) {
+    alert("Erro ao conectar ao servidor. Tente novamente.");
+    console.error(error);
+  }
+});
