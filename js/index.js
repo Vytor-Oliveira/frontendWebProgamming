@@ -42,7 +42,7 @@ document.querySelector("form").addEventListener("submit", async function (event)
   }
 
   try {
-    const response = await fetch("https://seu-backend.com/api/cadastrar", {
+    const response = await fetch("https:https://puffwear.up.railway.app/api/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
