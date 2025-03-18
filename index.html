@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puff Wear - Home</title>
+    <link rel="stylesheet" href="../css/index.css" />
+  </head>
+  <body>
+    <!-- Barra de Navegação -->
+    <header>
+      <div class="logo">
+        <h1>Puff Wear</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="./pages/login.html">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Seção de Produtos com Carrossel -->
+    <section class="produtos">
+      <h2>Fique de olho nos nossos mais novos produtos!!!</h2>
+
+      <!-- Carrossel -->
+      <div class="carrossel-container">
+        <div class="carrossel">
+          <div class="produto" id="produto1">
+            <img
+              src="https://via.placeholder.com/300x400.png?text=Produto+1"
+              alt="Produto 1"
+            />
+            <h3>Camiseta Puff</h3>
+            <p>R$ 59,99</p>
+            <button onclick="verDetalhes('produto1')">Ver Detalhes</button>
+          </div>
+          <div class="produto" id="produto2">
+            <img
+              src="https://via.placeholder.com/300x400.png?text=Produto+2"
+              alt="Produto 2"
+            />
+            <h3>Calça Jeans Puff Style</h3>
+            <p>R$ 129,99</p>
+            <button onclick="verDetalhes('produto2')">Ver Detalhes</button>
+          </div>
+          <div class="produto" id="produto3">
+            <img
+              src="https://via.placeholder.com/300x400.png?text=Produto+3"
+              alt="Produto 3"
+            />
+            <h3>Jaqueta de Couro Puff Fashion</h3>
+            <p>R$ 249,99</p>
+            <button onclick="verDetalhes('produto3')">Ver Detalhes</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+      <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../js/index.js"></script>
+  </body>
+</html>
