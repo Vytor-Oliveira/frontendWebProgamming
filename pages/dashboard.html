@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Admin</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        input, button {
+            padding: 10px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Gerenciar Produtos</h2>
+        <form id="product-form">
+            <input type="text" id="product-name" placeholder="Nome do Produto" required>
+            <input type="text" id="product-descricao" placeholder="Descrição" required>
+            <input type="number" id="product-price" placeholder="Preço" required>
+            <input type="number" id="product-estoque" placeholder="Estoque" required>
+            <input type="text" id="product-tamanhos" placeholder="Tamanhos (ex: P,M,G)" required>
+            <input type="text" id="product-imagem" placeholder="URL da Imagem" required>
+            <button type="submit">Adicionar Produto</button>
+        </form>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
+                    <th>Estoque</th>
+                    <th>Tamanhos</th>
+                    <th>Imagem</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                <!-- Produtos serão inseridos aqui -->
+            </tbody>
+        </table>
+    </div>
+    <script>
+        const API_URL = 'https://puffwear.up.railway.app/produtos'; // Substitua pela URL real
+        
+        document.getElementById('product-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const produto = {
+                nome: document.getElementById('product-name').value,
+                descricao: document.getElementById('product-descricao').value,
+                preco: parseFloat(document.getElementById('product-price').value),
+                estoque: parseInt(document.getElementById('product-estoque').value),
+                tamanhos: document.getElementById('product-tamanhos').value,
+                imagem: document.getElementById('product-imagem').value
+            };
+            
+            const response = await fetch(`${API_URL}/produtos`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(produto)
+            });
+            
+            if (response.ok) {
+                carregarProdutos();
+                document.getElementById('product-form').reset();
+            } else {
+                alert('Erro ao adicionar produto');
+            }
+        });
+        
+        async function carregarProdutos() {
+            const response = await fetch(`${API_URL}/produtos`);
+            const produtos = await response.json();
+            const tbody = document.getElementById('product-list');
+            tbody.innerHTML = '';
+            produtos.forEach(produto => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${produto.nome}</td>
+                    <td>${produto.descricao}</td>
+                    <td>R$ ${produto.preco}</td>
+                    <td>${produto.estoque}</td>
+                    <td>${produto.tamanhos}</td>
+                    <td><img src="${produto.imagem}" alt="Imagem" width="50"></td>
+                    <td><button class='delete-btn' onclick='deletarProduto(${produto.id})'>Excluir</button></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        async function deletarProduto(id) {
+            const response = await fetch(`${API_URL}/produtos/${id}`, { method: 'DELETE' });
+            if (response.ok) {
+                carregarProdutos();
+            } else {
+                alert('Erro ao excluir produto');
+            }
+        }
+        
+        carregarProdutos();
+    </script>
+</body>
+</html>
