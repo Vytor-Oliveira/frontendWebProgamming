@@ -54,7 +54,7 @@ async function carregarProdutos() {
                 <td>R$ ${produto.preco.toFixed(2)}</td>
                 <td>${produto.estoque}</td>
                 <td>${produto.tamanhos}</td>
-                <td><img src="${produto.imagem}" alt="Imagem" width="50"></td>
+                <td><img src="${produto.imagem}" alt="Imagem" width="50" onclick="abrirImagem('${produto.imagem}')" style="cursor:pointer;"></td>
                 <td>
                     <button class='edit-btn' onclick='editarProduto(${produto.id}, "${produto.nome}", "${produto.descricao}", ${produto.preco}, ${produto.estoque}, "${produto.tamanhos}", "${produto.imagem}")'>Editar</button>
                     <button class='delete-btn' onclick='deletarProduto(${produto.id})'>Excluir</button>
@@ -94,5 +94,24 @@ async function deletarProduto(id) {
         }
     }
 }
+
+function abrirImagem(url) {
+    const modal = document.getElementById('image-modal');
+    const img = document.getElementById('modal-image');
+    img.src = url;
+    modal.style.display = 'flex';
+}
+
+function fecharImagem() {
+    document.getElementById('image-modal').style.display = 'none';
+}
+
+// Fechar ao clicar fora da imagem
+document.getElementById('image-modal').addEventListener('click', function(event) {
+    if (event.target === this) {
+        fecharImagem();
+    }
+});
+
 
 carregarProdutos();

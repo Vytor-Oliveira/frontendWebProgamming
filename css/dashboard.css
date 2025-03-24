@@ -103,3 +103,64 @@ th {
     border-radius: 5px;
     font-size: 16px;
 }
+
+@media (max-width: 600px) {
+    table {
+      width: 100%;
+      display: block;
+      overflow-x: auto;
+    }
+    thead {
+      display: table-header-group;
+    }
+    tbody {
+      display: table-row-group;
+    }
+    th, td {
+      display: table-cell;
+    }
+  }
+
+  #image-modal img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    image-rendering: high-quality;
+}
+
+
+  #image-modal .modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#image-modal img {
+    max-width: 100%;
+    max-height: 80vh;
+}
+
+
+/* Botão para fechar o modal da imagem*/
+.close-btn-1 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
