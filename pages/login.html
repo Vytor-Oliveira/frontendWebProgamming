@@ -31,7 +31,7 @@
               required
             />
           </div>
-          <button type="submit" href="../pages/dashboard.html">Entrar</button>
+          <button type="submit" id="login-btn">Entrar</button>
         </form>
         <div class="footer">
           <p>
@@ -40,5 +40,11 @@
         </div>
       </div>
     </div>
+    <script>//remover depois
+      document.getElementById("login-btn").addEventListener("click", function (event) {
+        event.preventDefault(); // Impede o envio do formulário
+        window.location.href = "../pages/dashboard.html"; // Redireciona para o dashboard
+      });
+    </script>
   </body>
 </html>
