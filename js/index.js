@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       if (response.ok) {
         alert("Cadastro realizado com sucesso!");
-        window.location.href = "login.html"; // Redireciona para login
+        window.location.href = "./login.html"; // Redireciona para login
       } else {
         alert(`Erro: ${data.message}`);
       }
