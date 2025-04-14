@@ -67,3 +67,79 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.querySelector("form");
+
+  // Detecta qual página está aberta
+  const isCadastro = window.location.pathname.includes("cadastro.html");
+  const isLogin = window.location.pathname.includes("login.html");
+
+  form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+
+    if (isCadastro) {
+      const nome = document.getElementById("nome").value;
+      const confirmarSenha = document.getElementById("confirmar-senha").value;
+
+      if (senha !== confirmarSenha) {
+        alert("As senhas não coincidem!");
+        return;
+      }
+
+      try {
+        const response = await fetch("https://puffwear.up.railway.app/cadastro", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ nome, email, senha }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          alert("Cadastro realizado com sucesso!");
+          window.location.href = "login.html";
+        } else {
+          alert(`Erro: ${data.message}`);
+        }
+      } catch (error) {
+        console.error("Erro ao cadastrar:", error);
+        alert("Erro ao conectar com o servidor.");
+      }
+    }
+
+    if (isLogin) {
+      try {
+        const response = await fetch("https://puffwear.up.railway.app/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, senha }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+          localStorage.setItem("token", data.token);
+
+          if (data.is_admin) {
+            window.location.href = "dashboard.html";
+          } else {
+            window.location.href = "user.html";
+          }
+        } else {
+          alert(`Erro: ${data.message}`);
+        }
+      } catch (error) {
+        console.error("Erro ao fazer login:", error);
+        alert("Erro ao conectar com o servidor.");
+      }
+    }
+  });
+});
