@@ -3,8 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puff Wear - Home</title>
-    <link rel="stylesheet" href="../css/index.css" />
+    <title>PuffWear - Home</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="./js/index.js"></script>
   </head>
   <body>
     <!-- Barra de Navegação -->
@@ -15,7 +16,20 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
+          <li><a href="./pages/dashboard.html">Admin</a></li>
           <li><a href="./pages/login.html">Login</a></li>
+          <li><a href="./pages/user.html"> <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+         <!-- Borda circular externa -->
+         <circle cx="12" cy="12" r="11" stroke="white" stroke-width="2" fill="none"/>
+         
+         <!-- Cabeça do usuário -->
+         <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2"/>
+         
+         <!-- Corpo do usuário -->
+         <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="white" stroke-width="2" fill="none"/>
+       </svg>
+      </a></li>
         </ul>
       </nav>
     </header>
@@ -34,7 +48,7 @@
             />
             <h3>Camiseta Puff</h3>
             <p>R$ 59,99</p>
-            <button onclick="verDetalhes('produto1')">Ver Detalhes</button>
+            <a href="./pages/product.html">Ver Detalhes</a>
           </div>
           <div class="produto" id="produto2">
             <img
@@ -43,7 +57,7 @@
             />
             <h3>Calça Jeans Puff Style</h3>
             <p>R$ 129,99</p>
-            <button onclick="verDetalhes('produto2')">Ver Detalhes</button>
+            <a href="./pages/product.html">Ver Detalhes</a>
           </div>
           <div class="produto" id="produto3">
             <img
@@ -52,7 +66,7 @@
             />
             <h3>Jaqueta de Couro Puff Fashion</h3>
             <p>R$ 249,99</p>
-            <button onclick="verDetalhes('produto3')">Ver Detalhes</button>
+            <a href="./pages/product.html">Ver Detalhes</a>
           </div>
         </div>
       </div>
@@ -62,7 +76,5 @@
     <footer>
       <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
     </footer>
-
-    <script src="../js/index.js"></script>
   </body>
 </html>

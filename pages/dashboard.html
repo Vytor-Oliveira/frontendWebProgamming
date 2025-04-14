@@ -3,10 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciar Produtos</title>
+    <title>PuffWear - Admin</title>
     <link rel="stylesheet" href="../css/dashboard.css">
+    <script src="../js/dashboard.js"></script>
 </head>
 <body>
+    <header>
+        <div class="logo">
+            <h1>Puff Wear</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./dashboard.html">Admin</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./user.html"> <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <!-- Borda circular externa -->
+                            <circle cx="12" cy="12" r="11" stroke="white" stroke-width="2" fill="none" />
+    
+                            <!-- Cabeça do usuário -->
+                            <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2" />
+    
+                            <!-- Corpo do usuário -->
+                            <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="white" stroke-width="2" fill="none" />
+                        </svg>
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
         <h2>Gerenciar Produtos</h2>
         <button class="add-btn" onclick="abrirModal()">Adicionar Produto</button>
@@ -49,6 +74,8 @@
         </div>
     </div>
     
-    <script src="../js/dashboard.js"></script>
+    <footer>
+        <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>

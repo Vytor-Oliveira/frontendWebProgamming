@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PuffWear - Home</title>
+    <link rel="stylesheet" href="../css/user.css" />
+</head>
+
+<body>
+    <!-- Barra de Navegação -->
+    <header>
+        <div class="logo">
+            <h1>Puff Wear</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="./dashboard.html">Admin</a></li>
+                <li><a href="./login.html">Login</a></li>
+                <li><a href="./user.html"> <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <!-- Borda circular externa -->
+                            <circle cx="12" cy="12" r="11" stroke="white" stroke-width="2" fill="none" />
+
+                            <!-- Cabeça do usuário -->
+                            <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2" />
+
+                            <!-- Corpo do usuário -->
+                            <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="white" stroke-width="2" fill="none" />
+                        </svg>
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <h2>Tela de Usuário</h2>
+
+        <form>
+            <label for="name">Nome</label>
+            <input type="text" id="name" placeholder="Digite seu nome" />
+
+            <label for="password">Nova Senha</label>
+            <input type="password" id="password" placeholder="Digite nova senha" />
+
+            <label for="confirm-password">Confirmar Senha</label>
+            <input type="password" id="confirm-password" placeholder="Confirme a senha" />
+
+            <button type="submit" class="btn">Salvar Alterações</button>
+        </form>
+
+        <div class="delete-account" onclick="confirmDelete()">Apagar conta</div>
+    </div>
+
+    <script>
+        function confirmDelete() {
+            if (confirm("Tem certeza que deseja apagar sua conta? Essa ação não poderá ser desfeita.")) {
+                alert("Conta apagada com sucesso (simulação).");
+            }
+        }
+    </script>
+    <footer>
+        <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

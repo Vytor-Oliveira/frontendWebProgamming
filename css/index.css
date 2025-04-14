@@ -116,7 +116,7 @@ header nav ul li a:hover {
   color: #f39c12;
 }
 
-.produto button {
+.produto a {
   background-color: #f39c12;
   border: none;
   color: white;
@@ -126,9 +126,10 @@ header nav ul li a:hover {
   border-radius: 30px;
   transition: background-color 0.3s ease;
   font-weight: 500;
+  text-decoration: none;
 }
 
-.produto button:hover {
+.produto a:hover {
   background-color: #e67e22;
 }
 
@@ -148,21 +149,21 @@ footer p {
 /* Responsividade */
 @media (max-width: 768px) {
   header {
-      flex-direction: column;
-      text-align: center;
-      padding: 20px;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
   }
-  
+
   header nav ul {
-      flex-direction: column;
+    flex-direction: column;
   }
-  
+
   header nav ul li {
-      margin: 10px 0;
+    margin: 10px 0;
   }
-  
+
   .carrossel {
-      flex-wrap: wrap;
-      justify-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }

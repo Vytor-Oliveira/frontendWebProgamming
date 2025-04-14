@@ -23,59 +23,60 @@ function moverCarrossel(direcao) {
   carrossel.style.transform = `translateX(${deslocamento}px)`;
 }
 
-// Função para mostrar detalhes do produto
-function verDetalhes(produtoId) {
-  alert("Você clicou para ver os detalhes do " + produtoId);
-}
+// Função para acessar a página do produto
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
 
-  // Detecta qual página está aberta
-  const isCadastro = window.location.pathname.includes("cadastro.html");
-  const isLogin = window.location.pathname.includes("login.html");
-
   form.addEventListener("submit", async function (event) {
-    event.preventDefault();
+    event.preventDefault(); // Impede o envio padrão do formulário
 
+    const nome = document.getElementById("nome").value;
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
+    const confirmarSenha = document.getElementById("confirmar-senha").value;
 
-    if (isCadastro) {
-      const nome = document.getElementById("nome").value;
-      const confirmarSenha = document.getElementById("confirmar-senha").value;
-
-      if (senha !== confirmarSenha) {
-        alert("As senhas não coincidem!");
-        return;
-      }
-
-      try {
-        const response = await fetch("https://puffwear.up.railway.app/cadastro", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ nome, email, senha }),
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-          alert("Cadastro realizado com sucesso!");
-          window.location.href = "login.html";
-        } else {
-          alert(`Erro: ${data.message}`);
-        }
-      } catch (error) {
-        console.error("Erro ao cadastrar:", error);
-        alert("Erro ao conectar com o servidor.");
-      }
+    if (senha !== confirmarSenha) {
+      alert("As senhas não coincidem!");
+      return;
     }
 
-    if (isLogin) {
+    try {
+      const response = await fetch("https://puffwear.up.railway.app/cadastro", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({nome, email, senha}),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert("Cadastro realizado com sucesso!");
+        window.location.href = "login.html"; // Redireciona para login
+      } else {
+        alert(`Erro: ${data.message}`);
+      }
+    } catch (error) {
+      console.error("Erro ao cadastrar:", error);
+      alert("Erro ao conectar com o servidor. Tente novamente.");
+    }
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("form-login");
+
+  if (form) {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
       try {
-        const response = await fetch("https://puffwear.up.railway.app/login", {
+        const res = await fetch("https://puffwear.up.railway.app/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -83,23 +84,19 @@ document.addEventListener("DOMContentLoaded", function () {
           body: JSON.stringify({ email, senha }),
         });
 
-        const data = await response.json();
+        const data = await res.json();
 
-        if (response.ok) {
+        if (res.ok) {
           localStorage.setItem("token", data.token);
-
-          if (data.is_admin) {
-            window.location.href = "dashboard.html";
-          } else {
-            window.location.href = "user.html";
-          }
+          alert("Login realizado com sucesso!");
+          window.location.href = "./dashboard.html"; // ou redirecione para onde quiser
         } else {
-          alert(`Erro: ${data.message}`);
+          alert(data.message || "Erro ao fazer login");
         }
-      } catch (error) {
-        console.error("Erro ao fazer login:", error);
+      } catch (err) {
+        console.error(err);
         alert("Erro ao conectar com o servidor.");
       }
-    }
-  });
+    });
+  }
 });
