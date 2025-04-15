@@ -16,25 +16,23 @@
           <li><a href="../index.html">Home</a></li>
           <li><a href="./dashboard.html">Admin</a></li>
           <li><a href="./login.html">Login</a></li>
-          <li><a href="./user.html"> <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <!-- Borda circular externa -->
+          <li>
+            <a href="./user.html">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="11" stroke="white" stroke-width="2" fill="none" />
-    
-                <!-- Cabeça do usuário -->
                 <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2" />
-    
-                <!-- Corpo do usuário -->
                 <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="white" stroke-width="2" fill="none" />
               </svg>
-            </a></li>
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
+
     <div class="login-container">
       <div class="login-box">
         <h2>Login</h2>
-        <form action="#" method="post">
+        <form id="form-login">
           <div class="input-group">
             <label for="email">E-mail</label>
             <input
@@ -55,7 +53,7 @@
               required
             />
           </div>
-          <button href="./dashboard.html" type="submit" method="post" id="login-btn">Entrar</button>
+          <button type="submit" id="login-btn">Entrar</button>
         </form>
         <div class="footer">
           <p>
@@ -64,9 +62,11 @@
         </div>
       </div>
     </div>
+
     <footer>
       <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
     </footer>
-    <script src="../js/index.js" ></script>
+
+    <script src="../js/login.js"></script>
   </body>
 </html>
