@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function () {
           alert("Login realizado com sucesso!");
 
           if (userData.is_admin) {
-            window.location.href = "../admin/dashboard.html";
+            window.location.href = "../pages/dashboard.html";
           } else {
-            window.location.href = "../user/home.html";
+            window.location.href = "../pages/user.html";
           }
         } else {
           alert(data.message || "Erro ao fazer login");
