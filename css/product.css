@@ -1,20 +1,19 @@
-/* Reset de margens e padding */
+/* Reset e base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Fonte externa do Google Fonts */
 body {
   font-family: "Poppins", sans-serif;
-  line-height: 1.6;
   background-color: #f9f9f9;
   color: #333;
+  line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Barra de navegação */
+/* Header */
 header {
   background-color: #2c3e50;
   color: white;
@@ -22,25 +21,51 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Logo */
 header .logo h1 {
   font-size: 1.8em;
   font-weight: 600;
   letter-spacing: 2px;
 }
 
-header nav ul {
-  list-style-type: none;
+/* Menu Hamburguer */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 28px;
+  height: 21px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.menu-toggle .bar {
+  height: 3px;
+  width: 100%;
+  background-color: white;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Navegação */
+nav {
+  transition: all 0.3s ease;
+}
+
+nav ul {
   display: flex;
+  list-style: none;
+  gap: 20px;
+  align-items: center;
 }
 
-header nav ul li {
-  margin-right: 30px;
-}
-
-header nav ul li a {
+nav ul li a {
   text-decoration: none;
   color: white;
   font-weight: 500;
@@ -48,23 +73,29 @@ header nav ul li a {
   transition: color 0.3s ease;
 }
 
-header nav ul li a:hover {
+nav ul li a:hover {
   color: #f39c12;
 }
 
+/* Produto */
 .product-container {
-  margin: 5em 3em;
+  margin: 5em auto;
+  padding: 2em;
   background: white;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   display: flex;
-  max-width: 70em;
-  width: 100%;
-  overflow: hidden;
+  max-width: 1000px;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+.product-image,
+.product-details {
+  flex: 1 1 300px;
 }
 
 .product-image {
-  flex: 1;
   background-color: #f2f2f2;
   display: flex;
   justify-content: center;
@@ -73,19 +104,12 @@ header nav ul li a:hover {
 }
 
 .product-image img {
-  max-width: 80%;
+  max-width: 100%;
   border-radius: 10px;
-}
-
-.product-details {
-  flex: 1;
-  padding: 30px;
-  box-sizing: border-box;
 }
 
 .product-details h1 {
   margin-bottom: 20px;
-  color: #333;
 }
 
 label {
@@ -93,7 +117,13 @@ label {
   margin-top: 15px;
   margin-bottom: 5px;
   font-size: 14px;
-  color: #333;
+}
+
+.tamanhos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
 }
 
 .tamanhos button {
@@ -102,16 +132,11 @@ label {
   border: 1px solid #000;
   height: 3em;
   width: 3em;
-  margin: 1em 0;
   cursor: pointer;
   transition: 0.5s;
 }
 
-.tamanhos button:hover {
-  background: #000;
-  color: #fff;
-}
-
+.tamanhos button:hover,
 .tamanhos button:focus {
   background: #000;
   color: #fff;
@@ -145,11 +170,61 @@ footer {
   text-align: center;
   padding: 20px;
   font-size: 1.1em;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
+  margin-top: 3em;
 }
 
-footer p {
-  margin: 0;
+/* Responsivo */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: #2c3e50;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+  }
+
+  nav.active {
+    display: flex;
+    animation: slideDown 0.3s ease-in-out;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 10px 0;
+    font-size: 1.1em;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }

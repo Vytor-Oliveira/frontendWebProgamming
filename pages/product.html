@@ -1,30 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title id="product-title">PuffWear - Produto</title>
-  <link rel="stylesheet" href="../css/product.css">
+  <link rel="stylesheet" href="../css/product.css" />
 </head>
 <body>
-  <!-- Barra de Navegação -->
   <header>
     <div class="logo">
       <h1>Puff Wear</h1>
     </div>
-    <nav>
+    <button class="menu-toggle" id="menu-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+    <nav id="navbar">
       <ul>
         <li><a href="../index.html">Home</a></li>
         <li><a href="./dashboard.html">Admin</a></li>
         <li><a href="./login.html">Login</a></li>
-        <li><a href="./user.html"> 
+        <li><a href="./user.html">
           <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg">
-            <!-- Borda circular externa -->
             <circle cx="12" cy="12" r="11" stroke="white" stroke-width="2" fill="none" />
-            <!-- Cabeça do usuário -->
             <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2" />
-            <!-- Corpo do usuário -->
             <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="white" stroke-width="2" fill="none" />
           </svg>
         </a></li>
@@ -38,24 +39,33 @@
     </div>
     <div class="product-details">
       <h1 id="product-name">Produto</h1>
-
       <label for="size">Tamanhos:</label>
-      <div class="tamanhos" id="product-sizes">
-        <!-- Botões de tamanho serão inseridos aqui -->
-      </div>
-
+      <div class="tamanhos" id="product-sizes"></div>
       <p id="product-description" class="description">Descrição do produto.</p>
-
       <button class="btn">Comprar Agora</button>
     </div>
   </div>
 
-  <!-- Rodapé -->
   <footer>
     <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
   </footer>
 
-  <!-- Inclusão do script JavaScript -->
   <script src="../js/product.js"></script>
+  <script>
+    const menuToggle = document.getElementById("menu-toggle");
+    const navbar = document.getElementById("navbar");
+
+    menuToggle.addEventListener("click", () => {
+      navbar.classList.toggle("active");
+    });
+
+    document.querySelectorAll("#navbar ul li a").forEach(link => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+          navbar.classList.remove("active");
+        }
+      });
+    });
+  </script>
 </body>
 </html>
