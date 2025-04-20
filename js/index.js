@@ -1,19 +1,34 @@
-let indiceAtual = 0; // Índice do produto visível no carrossel
+document.addEventListener("DOMContentLoaded", async () => {
+  const productCarousel = document.getElementById("product-carousel");
 
-// Função para mover o carrossel
-function moverCarrossel(direcao) {
-  const produtos = document.querySelectorAll(".produto");
-  const totalProdutos = produtos.length;
+  try {
+    // Chama a API para obter os produtos
+    const response = await fetch('https://puffwear.up.railway.app/produtos'); // URL da sua API
+    if (!response.ok) {
+      throw new Error('Erro ao carregar os produtos: ' + response.statusText);
+    }
 
-  indiceAtual += direcao;
-
-  if (indiceAtual < 0) {
-    indiceAtual = totalProdutos - 1;
-  } else if (indiceAtual >= totalProdutos) {
-    indiceAtual = 0;
+    const produtos = await response.json();
+    
+    if (produtos.length === 0) {
+      productCarousel.innerHTML = '<p>Não há produtos disponíveis no momento.</p>';
+    } else {
+      produtos.forEach(produto => {
+        const productElement = document.createElement('div');
+        productElement.classList.add('produto');
+        productElement.innerHTML = `
+          <img src="${produto.imagem}" alt="${produto.nome}" />
+          <h3>${produto.nome}</h3>
+          <p>R$ ${produto.preco}</p>
+          <a href="./pages/product.html?id=${produto.id}">Ver Detalhes</a>
+        `;
+        productCarousel.appendChild(productElement);
+      });
+    }
+  } catch (error) {
+    console.error('Erro ao carregar produtos:', error);
+    const errorMessage = document.createElement('p');
+    errorMessage.textContent = 'Não foi possível carregar os produtos. Tente novamente mais tarde.';
+    productCarousel.appendChild(errorMessage);
   }
-
-  const deslocamento = -indiceAtual * (produtos[0].offsetWidth + 30); // 30px de margin
-  const carrossel = document.querySelector(".carrossel");
-  carrossel.style.transform = `translateX(${deslocamento}px)`;
-}
+});

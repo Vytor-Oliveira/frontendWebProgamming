@@ -56,14 +56,19 @@ document
       descricao: document.getElementById("product-descricao").value,
       preco: parseFloat(document.getElementById("product-price").value),
       estoque: parseInt(document.getElementById("product-estoque").value),
-      tamanhos: document.getElementById("product-tamanhos").value,
+      tamanhos: document.getElementById("product-tamanhos").value.split(','), // Transforma a string em um array
       imagem: document.getElementById("product-imagem").value,
     };
+
+    const token = localStorage.getItem("token");
 
     try {
       const response = await fetch(id ? `${API_URL}/${id}` : API_URL, {
         method: id ? "PUT" : "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`, // Envia o token no cabeçalho
+        },
         body: JSON.stringify(produto),
       });
 

@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="../css/dashboard.css" />
   </head>
   <body>
-
     <!-- TODO: CONTEÚDO DA PÁGINA ESCONDIDO ATÉ AUTORIZAÇÃO -->
-    <div id="app" style="display: none;">
+    <div id="app" style="display: none">
       <header>
         <div class="logo">
           <h1>Puff Wear</h1>
@@ -36,7 +35,13 @@
                     stroke-width="2"
                     fill="none"
                   />
-                  <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2" />
+                  <circle
+                    cx="12"
+                    cy="8"
+                    r="4"
+                    stroke="white"
+                    stroke-width="2"
+                  />
                   <path
                     d="M4 20c0-4 4-6 8-6s8 2 8 6"
                     stroke="white"
@@ -52,7 +57,9 @@
 
       <div class="container">
         <h2>Gerenciar Produtos</h2>
-        <button class="add-btn" onclick="abrirModal()">Adicionar Produto</button>
+        <button class="add-btn" onclick="abrirModal()">
+          Adicionar Produto
+        </button>
         <table>
           <thead>
             <tr>
@@ -124,7 +131,13 @@
           <span
             class="close-btn-1"
             onclick="fecharImagem()"
-            style="font-size: 24px; cursor: pointer; position: absolute; top: 10px; right: 15px;"
+            style="
+              font-size: 24px;
+              cursor: pointer;
+              position: absolute;
+              top: 10px;
+              right: 15px;
+            "
             >&times;</span
           >
           <img
