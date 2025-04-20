@@ -17,7 +17,3 @@ function moverCarrossel(direcao) {
   const carrossel = document.querySelector(".carrossel");
   carrossel.style.transform = `translateX(${deslocamento}px)`;
 }
-
-
-
-

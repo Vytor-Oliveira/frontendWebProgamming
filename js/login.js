@@ -1,4 +1,3 @@
-// ===================== LOGIN =====================
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("form-login");
 
@@ -22,8 +21,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (res.ok) {
           localStorage.setItem("token", data.token);
+
+          const userData = parseJwt(data.token);
           alert("Login realizado com sucesso!");
-          window.location.href = "./dashboard.html";
+
+          if (userData.is_admin) {
+            window.location.href = "../admin/dashboard.html";
+          } else {
+            window.location.href = "../user/home.html";
+          }
         } else {
           alert(data.message || "Erro ao fazer login");
         }
@@ -34,3 +40,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+function parseJwt(token) {
+  const base64 = token.split(".")[1];
+  const jsonPayload = decodeURIComponent(
+    atob(base64)
+      .split("")
+      .map(function (c) {
+        return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+      })
+      .join("")
+  );
+
+  return JSON.parse(jsonPayload);
+}

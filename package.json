@@ -1,0 +1,19 @@
+{
+  "name": "webprogramming",
+  "version": "1.0.0",
+  "description": "it's a ecommerce website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ErikAlexandreKestring/webProgramming.git"
+  },
+  "author": "Erik and Vytor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ErikAlexandreKestring/webProgramming/issues"
+  },
+  "homepage": "https://github.com/ErikAlexandreKestring/webProgramming#readme"
+}
