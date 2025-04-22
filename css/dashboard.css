@@ -116,6 +116,8 @@ th {
   color: white;
 }
 
+/* ... outros estilos ... */
+
 .modal {
   display: none;
   position: fixed;
@@ -126,6 +128,7 @@ th {
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
+  z-index: 1000; /* Garante que o modal fique sobre outros elementos */
 }
 
 .modal-content {
@@ -133,8 +136,16 @@ th {
   padding: 20px;
   border-radius: 10px;
   width: 90%;
-  max-width: 500px;
+  max-width: 600px; /* Aumentei um pouco a largura máxima */
   text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra mais suave */
+  max-height: 80vh; /* Altura máxima do conteúdo */
+  overflow-y: auto; /* Adiciona rolagem se o conteúdo for longo */
+}
+
+.modal-content h3 {
+  margin-bottom: 15px;
+  color: #333;
 }
 
 .modal-content form {
@@ -143,13 +154,104 @@ th {
   gap: 10px;
 }
 
-.modal-content input {
+.modal-content input[type="text"],
+.modal-content input[type="number"],
+.modal-content textarea {
   width: 100%;
-  padding: 8px;
+  padding: 10px; /* Aumentei um pouco o padding */
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  box-sizing: border-box; /* Garante que padding e borda não aumentem a largura */
 }
+
+.modal-content textarea {
+  resize: vertical; /* Permite ao usuário redimensionar verticalmente */
+  min-height: 80px; /* Altura mínima para o textarea */
+}
+
+.modal-content button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content .add-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.modal-content .add-btn:hover {
+  background-color: #218838;
+}
+
+.modal-content .close-btn {
+  background-color: #6c757d;
+  color: white;
+}
+
+.modal-content .close-btn:hover {
+  background-color: #5a6268;
+}
+
+.modal-content form > button {
+  margin-top: 15px; /* Adiciona espaço entre os campos e os botões */
+}
+
+.modal-content form > .close-btn {
+  margin-top: 5px; /* Menos espaço para o botão fechar dentro do form */
+}
+
+/* Estilos específicos para o modal de imagem (mantidos) */
+#image-modal img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  image-rendering: high-quality;
+}
+
+#image-modal .modal-content {
+  max-width: 90%;
+  max-height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Adiciona padding ao redor da imagem */
+}
+
+#image-modal img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px; /* Mantém o arredondamento da imagem */
+}
+
+/* Botão para fechar o modal da imagem (mantido) */
+.close-btn-1 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001; /* Garante que o botão de fechar fique sobre a imagem */
+}
+
+.close-btn-1:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* ... outros estilos ... */
 
 @media (max-width: 600px) {
   table {
@@ -225,4 +327,18 @@ footer {
 
 footer p {
   margin: 0;
+}
+
+#image-preview {
+  max-width: 100%; /* Garante que a imagem não seja maior que o container */
+  height: auto;    /* Mantém a proporção da imagem */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: block; /* Evita espaçamentos extras abaixo da imagem */
+}
+
+#image-preview-container {
+  margin-top: 10px;
+  display: none;
+  max-width: 100%; /* Garante que o container também não seja muito largo */
 }

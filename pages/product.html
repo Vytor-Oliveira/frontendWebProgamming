@@ -4,35 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title id="product-title">PuffWear - Produto</title>
+
+  <!-- Estilo da página -->
   <link rel="stylesheet" href="../css/product.css" />
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <h1>Puff Wear</h1>
-    </div>
-    <button class="menu-toggle" id="menu-toggle">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
-    </button>
-    <nav id="navbar">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="./dashboard.html">Admin</a></li>
-        <li><a href="./login.html">Login</a></li>
-        <li><a href="./user.html">
-          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="11" stroke="white" stroke-width="2" fill="none" />
-            <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2" />
-            <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="white" stroke-width="2" fill="none" />
-          </svg>
-        </a></li>
-      </ul>
-    </nav>
-  </header>
 
+  <!-- Navbar será carregada dinamicamente aqui -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Conteúdo do produto -->
   <div class="product-container">
     <div class="product-image">
       <img id="product-image" src="" alt="Imagem do Produto" />
@@ -46,26 +27,13 @@
     </div>
   </div>
 
+  <!-- Rodapé -->
   <footer>
     <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="../js/product.js"></script>
-  <script>
-    const menuToggle = document.getElementById("menu-toggle");
-    const navbar = document.getElementById("navbar");
-
-    menuToggle.addEventListener("click", () => {
-      navbar.classList.toggle("active");
-    });
-
-    document.querySelectorAll("#navbar ul li a").forEach(link => {
-      link.addEventListener("click", () => {
-        if (window.innerWidth <= 768) {
-          navbar.classList.remove("active");
-        }
-      });
-    });
-  </script>
+  <script src="../js/loadNavbar.js"></script>
 </body>
 </html>

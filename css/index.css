@@ -149,25 +149,5 @@ footer p {
   margin: 0;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
 
-  header nav ul {
-    flex-direction: column;
-  }
-
-  header nav ul li {
-    margin: 10px 0;
-  }
-
-  .carrossel {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
 

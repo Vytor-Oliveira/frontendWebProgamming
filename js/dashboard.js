@@ -32,17 +32,85 @@ if (!token || !user || (isAdminPage && !user.is_admin)) {
   carregarProdutos();
 }
 
-// ✅ 4. Lógica de CRUD dos produtos
-function abrirModal(editando = false) {
-  document.getElementById("product-modal").style.display = "flex";
-  document.getElementById("modal-title").textContent = editando
-    ? "Editar Produto"
-    : "Adicionar Produto";
+const inputImagem = document.getElementById("product-imagem");
+const imagePreviewContainer = document.getElementById("image-preview-container");
+const imagePreview = document.getElementById("image-preview");
+
+inputImagem.addEventListener("input", function() {
+  const url = this.value;
+  if (url) {
+    imagePreview.src = url;
+    imagePreviewContainer.style.display = "block";
+  } else {
+    imagePreview.src = "#";
+    imagePreviewContainer.style.display = "none";
+  }
+});
+
+function abrirModal(editando = false, produto = null) {
+  console.log("Abrir modal chamado. Editando:", editando);
+  const modal = document.getElementById("product-modal");
+  if (!modal) {
+    console.error("Modal não encontrado no DOM.");
+    return;
+  }
+  modal.style.display = "flex";
+  document.getElementById("modal-title").textContent = editando ? "Editar Produto" : "Adicionar Produto";
+
+  document.getElementById("product-form").reset();
+  document.getElementById("product-id").value = produto ? produto.id : "";
+  document.getElementById("product-name").value = produto ? produto.nome : "";
+  document.getElementById("product-descricao").value = produto ? produto.descricao : "";
+  document.getElementById("product-price").value = produto ? produto.preco : "";
+  document.getElementById("product-estoque").value = produto ? produto.estoque : "";
+  document.getElementById("product-tamanhos").value = produto ? produto.tamanhos.join(',') : "";
+  document.getElementById("product-imagem").value = produto ? produto.imagem : "";
+
+  // Tenta encontrar os elementos de prévia novamente dentro do escopo do modal aberto
+  const localImagePreviewContainer = document.getElementById("image-preview-container");
+  const localImagePreview = document.getElementById("image-preview");
+
+  console.log("localImagePreviewContainer:", localImagePreviewContainer);
+  console.log("localImagePreview:", localImagePreview);
+
+  if (localImagePreviewContainer && localImagePreview) {
+    if (produto && produto.imagem) {
+      localImagePreview.src = produto.imagem;
+      localImagePreviewContainer.style.display = "block";
+    } else {
+      localImagePreview.src = "#";
+      localImagePreviewContainer.style.display = "none";
+    }
+  } else {
+    console.error("Elementos de prévia da imagem não encontrados no DOM do modal.");
+  }
+}
+
+function abrirModalEdicao(botaoEditar) {
+  console.log("abrirModalEdicao chamado.");
+  const row = botaoEditar.closest('tr');
+  const produtoId = row.dataset.id;
+  const nome = row.dataset.nome;
+  const descricao = row.dataset.descricao;
+  const preco = parseFloat(row.dataset.preco);
+  const estoque = parseInt(row.dataset.estoque);
+  const tamanhos = JSON.parse(row.dataset.tamanhos);
+  const imagem = row.dataset.imagem;
+
+  console.log("Produto ao editar:", { id: produtoId, nome, descricao, preco, estoque, tamanhos, imagem });
+
+  const produto = { id: produtoId, nome, descricao, preco, estoque, tamanhos, imagem };
+  abrirModal(true, produto);
 }
 
 function fecharModal() {
+  console.log("Fechar modal chamado.");
   document.getElementById("product-modal").style.display = "none";
-  document.getElementById("product-form").reset();
+  // Resetar a prévia ao fechar o modal
+  const localImagePreview = document.getElementById("image-preview");
+  const localImagePreviewContainer = document.getElementById("image-preview-container");
+  if (localImagePreview) localImagePreview.src = "#";
+  if (localImagePreviewContainer) localImagePreviewContainer.style.display = "none";
 }
 
 document
@@ -93,27 +161,28 @@ async function carregarProdutos() {
 
     produtos.forEach((produto) => {
       const row = document.createElement("tr");
+      row.dataset.id = produto.id; // Adiciona o ID como data attribute
+      row.dataset.nome = produto.nome;
+      row.dataset.descricao = produto.descricao;
+      row.dataset.preco = produto.preco;
+      row.dataset.estoque = produto.estoque;
+      row.dataset.tamanhos = JSON.stringify(produto.tamanhos); // Salva o array como string JSON
+      row.dataset.imagem = produto.imagem;
+
+      const descricaoLimitada = produto.descricao.length > 50 ? produto.descricao.substring(0, 50) + "..." : produto.descricao;
       row.innerHTML = `
         <td>${produto.nome}</td>
-        <td>${produto.descricao}</td>
+        <td>${descricaoLimitada}</td>
         <td>R$ ${produto.preco.toFixed(2)}</td>
         <td>${produto.estoque}</td>
         <td>${produto.tamanhos}</td>
         <td>
-          <img src="${produto.imagem}" alt="Imagem" width="50" 
-               onclick="abrirImagem('${
-                 produto.imagem
-               }')" style="cursor:pointer;">
+          <img src="${produto.imagem}" alt="Imagem" width="50"
+               onclick="abrirImagem('${produto.imagem}')" style="cursor:pointer;">
         </td>
         <td>
-          <button class='edit-btn' onclick='editarProduto(${produto.id}, "${
-        produto.nome
-      }", "${produto.descricao}", ${produto.preco}, ${produto.estoque}, "${
-        produto.tamanhos
-      }", "${produto.imagem}")'>Editar</button>
-          <button class='delete-btn' onclick='deletarProduto(${
-            produto.id
-          })'>Excluir</button>
+          <button class='edit-btn' onclick='abrirModalEdicao(this)'>Editar</button>
+          <button class='delete-btn' onclick='deletarProduto(${produto.id})'>Excluir</button>
         </td>
       `;
       tbody.appendChild(row);
@@ -121,18 +190,6 @@ async function carregarProdutos() {
   } catch (error) {
     console.error("Erro ao carregar produtos:", error);
   }
-}
-
-function editarProduto(id, nome, descricao, preco, estoque, tamanhos, imagem) {
-  document.getElementById("product-id").value = id;
-  document.getElementById("product-name").value = nome;
-  document.getElementById("product-descricao").value = descricao;
-  document.getElementById("product-price").value = preco;
-  document.getElementById("product-estoque").value = estoque;
-  document.getElementById("product-tamanhos").value = tamanhos;
-  document.getElementById("product-imagem").value = imagem;
-
-  abrirModal(true);
 }
 
 async function deletarProduto(id) {
