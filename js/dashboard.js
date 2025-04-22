@@ -181,8 +181,8 @@ async function carregarProdutos() {
                onclick="abrirImagem('${produto.imagem}')" style="cursor:pointer;">
         </td>
         <td>
-          <button class='edit-btn' onclick='abrirModalEdicao(this)'>Editar</button>
-          <button class='delete-btn' onclick='deletarProduto(${produto.id})'>Excluir</button>
+          <button class='edit-btn dashboard-button' onclick='abrirModalEdicao(this)'>Editar</button>
+          <button class='delete-btn dashboard-button' onclick='deletarProduto(${produto.id})'>Excluir</button>
         </td>
       `;
       tbody.appendChild(row);
