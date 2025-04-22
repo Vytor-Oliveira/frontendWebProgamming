@@ -5,29 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Puff Wear - Login</title>
     <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/menu.css">
   </head>
   <body>
-    <header>
-      <div class="logo">
-        <h1>Puff Wear</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="./dashboard.html">Admin</a></li>
-          <li><a href="./login.html">Login</a></li>
-          <li>
-            <a href="./user.html">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="11" stroke="white" stroke-width="2" fill="none" />
-                <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2" />
-                <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="white" stroke-width="2" fill="none" />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+
+    <div id="navbar-placeholder"></div>
 
     <div class="login-container">
       <div class="login-box">
@@ -53,7 +35,7 @@
               required
             />
           </div>
-          <button type="submit" id="login-btn">Entrar</button>
+          <button class="confirm-btn login-button" type="submit" id="login-btn">Entrar</button>
         </form>
         <div class="footer">
           <p>
@@ -68,5 +50,6 @@
     </footer>
 
     <script src="../js/login.js"></script>
+    <script src="../js/loadNavbar.js"></script>
   </body>
 </html>

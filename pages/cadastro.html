@@ -5,32 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PuffWear - Cadastro</title>
     <link rel="stylesheet" href="../css/cadastro.css" />
+    <link rel="stylesheet" href="../css/menu.css">
   </head>
   <body>
-    <header>
-      <div class="logo">
-        <h1>Puff Wear</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="../index.html">Home</a></li>
-          <li><a href="./dashboard.html">Admin</a></li>
-          <li><a href="./login.html">Login</a></li>
-          <li><a href="./user.html"> <svg width="30" height="30" viewBox="0 0 24 24" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <!-- Borda circular externa -->
-                <circle cx="12" cy="12" r="11" stroke="white" stroke-width="2" fill="none" />
-    
-                <!-- Cabeça do usuário -->
-                <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2" />
-    
-                <!-- Corpo do usuário -->
-                <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="white" stroke-width="2" fill="none" />
-              </svg>
-            </a></li>
-        </ul>
-      </nav>
-    </header>
+
+    <div id="navbar-placeholder"></div>
+
     <div class="cadastro-container">
       <div class="cadastro-box">
         <h2>Cadastro</h2>
@@ -75,7 +55,7 @@
               required
             />
           </div>
-          <button type="submit" class="register-done">Cadastrar</button>
+          <button class="confirm-btn register-button" type="submit" class="register-done">Cadastrar</button>
         </form>
         <div class="footer">
           <p>Já tem uma conta? <a href="./login.html">Faça login!</a></p>
@@ -86,5 +66,6 @@
       <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
     </footer>
     <script src="../js/cadastro.js"></script>
+    <script src="../js/loadNavbar.js"></script>
   </body>
 </html>

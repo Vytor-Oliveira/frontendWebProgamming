@@ -107,7 +107,7 @@ h2 {
   outline: none;
 }
 
-button {
+.register-button {
   background-color: #f39c12;
   color: white;
   width: 100%;
