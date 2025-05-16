@@ -147,11 +147,16 @@ footer {
   text-align: center;
   padding: 20px;
   font-size: 1.1em;
-  position: fixed;
   width: 100%;
   bottom: 0;
 }
 
 footer p {
   margin: 0;
+}
+
+@media screen and (width <= 390px) {
+  .cadastro-box {
+    margin-top: 20px;
+  }
 }
