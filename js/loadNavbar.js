@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       }
 
-      // Lógica de visibilidade de login/logout
+      // Lógica de visibilidade de login/logout.
       const token = localStorage.getItem("token");
       if (token) {
         if (loginBtn) loginBtn.style.display = "none";
