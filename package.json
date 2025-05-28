@@ -4,7 +4,7 @@
   "description": "it's a ecommerce website",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/ErikAlexandreKestring/webProgramming/issues"
   },
-  "homepage": "https://github.com/ErikAlexandreKestring/webProgramming#readme"
+  "homepage": "https://github.com/ErikAlexandreKestring/webProgramming#readme",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "jest-fetch-mock": "^3.0.3"
+  }
 }

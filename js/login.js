@@ -54,3 +54,14 @@ function parseJwt(token) {
 
   return JSON.parse(jsonPayload);
 }
+
+async function realizarLogin(email, senha) {
+  const response = await fetch("https://puffwear.up.railway.app/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, senha }),
+  });
+  return response.json();
+}
+
+module.exports = { realizarLogin };

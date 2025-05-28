@@ -14,3 +14,5 @@ function parseJwt(token) {
     return null;
   }
 }
+
+module.exports = { parseJwt };
