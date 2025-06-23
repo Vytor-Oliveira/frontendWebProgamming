@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PuffWear - Checkout</title>
+    <link rel="stylesheet" href="../css/menu.css" />
+    <link rel="stylesheet" href="../css/checkout.css" />
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="checkout-container">
+      <h2>Finalizar Compra</h2>
+
+      <div class="order-summary">
+        <h3>Resumo do Pedido</h3>
+        <div id="order-items-list" class="order-items-list"></div>
+        <p class="order-total">
+          Total: <span id="checkout-total-price">R$ 0,00</span>
+        </p>
+      </div>
+
+      <div class="payment-method">
+        <h3>Método de Pagamento</h3>
+        <div class="pix-payment">
+          <h4>Pagar com PIX</h4>
+          <p>Escaneie o QR Code abaixo para efetuar o pagamento:</p>
+          <img
+            src="https://via.placeholder.com/200?text=QR+Code+PIX+Simulado"
+            alt="QR Code PIX Simulado"
+            class="pix-qr-code"
+            id="pix-qr-code"
+          />
+          <p class="pix-instructions">
+            Ou copie a chave PIX:
+            <span id="pix-key-value">chavepixexemplo@seubanco.com</span>
+          </p>
+          <button class="copy-pix-key-btn" id="copy-pix-key-btn">
+            Copiar Chave PIX
+          </button>
+          <p class="disclaimer">
+            <strong>Observação:</strong> Este é um QR Code de PIX simulado para
+            demonstração. Em um sistema real, este QR Code seria gerado
+            dinamicamente por um serviço de pagamento após a confirmação do
+            pedido.
+          </p>
+        </div>
+      </div>
+
+      <button id="confirm-purchase-btn" class="btn confirm-purchase-btn">
+        Confirmar Pagamento e Finalizar Pedido
+      </button>
+      <button id="back-to-cart-btn" class="btn back-btn">
+        Voltar para o Carrinho
+      </button>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/cartUtils.js"></script>
+    <script src="../js/loadNavbar.js"></script>
+    <script src="../js/checkout.js"></script>
+  </body>
+</html>

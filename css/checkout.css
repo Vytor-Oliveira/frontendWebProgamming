@@ -1,0 +1,241 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    overflow-x: hidden;
+}
+
+.checkout-container {
+    max-width: 800px;
+    margin: 5em auto 2em auto;
+    /* Ajuste a margem superior */
+    padding: 2.5em;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.checkout-container h2 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 1.5em;
+    font-weight: 700;
+}
+
+.order-summary,
+.payment-method {
+    background-color: #f8f8f8;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    text-align: left;
+}
+
+.order-summary h3,
+.payment-method h3 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 1em;
+    border-bottom: 2px solid #f39c12;
+    padding-bottom: 0.5em;
+    display: inline-block;
+    /* Para a linha de baixo ficar do tamanho do texto */
+}
+
+.order-items-list {
+    margin-bottom: 1em;
+}
+
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 1.1em;
+}
+
+.order-item:last-child {
+    border-bottom: none;
+}
+
+.order-item-details {
+    display: flex;
+    gap: 10px;
+}
+
+.order-item-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.order-total {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #28a745;
+    /* Cor de sucesso */
+    text-align: right;
+    margin-top: 1em;
+}
+
+.order-total span {
+    color: #f39c12;
+}
+
+.pix-payment h4 {
+    font-size: 1.5em;
+    color: #007bff;
+    /* Cor azul para PIX */
+    margin-bottom: 1em;
+}
+
+.pix-qr-code {
+    max-width: 200px;
+    height: auto;
+    border: 5px solid #000;
+    border-radius: 5px;
+    margin: 1.5em auto;
+    display: block;
+    /* Centraliza a imagem */
+}
+
+.pix-instructions {
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 1em;
+}
+
+.pix-instructions span {
+    font-weight: bold;
+    color: #333;
+    word-break: break-all;
+    /* Quebra a linha em caso de chave muito longa */
+}
+
+.copy-pix-key-btn {
+    background-color: #007bff;
+    /* Azul padrão */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1em;
+}
+
+.copy-pix-key-btn:hover {
+    background-color: #0056b3;
+}
+
+.disclaimer {
+    font-size: 0.9em;
+    color: #777;
+    margin-top: 1.5em;
+    padding-top: 1em;
+    border-top: 1px dashed #ddd;
+}
+
+.btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 2em;
+    display: inline-block;
+    width: auto;
+}
+
+.confirm-purchase-btn {
+    background-color: #28a745;
+    /* Verde para confirmar */
+    color: white;
+    margin-right: 10px;
+}
+
+.confirm-purchase-btn:hover {
+    background-color: #218838;
+}
+
+.back-btn {
+    background-color: #6c757d;
+    /* Cinza para voltar */
+    color: white;
+    margin-left: 10px;
+}
+
+.back-btn:hover {
+    background-color: #5a6268;
+}
+
+/* Rodapé */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-size: 1.1em;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    margin-top: 3em;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .checkout-container {
+        margin-top: 3em;
+        padding: 1.5em;
+    }
+
+    .checkout-container h2 {
+        font-size: 2em;
+    }
+
+    .order-summary h3,
+    .payment-method h3 {
+        font-size: 1.5em;
+    }
+
+    .order-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .order-item-details {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .order-item-price {
+        margin-top: 10px;
+    }
+
+    .pix-qr-code {
+        max-width: 150px;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+}

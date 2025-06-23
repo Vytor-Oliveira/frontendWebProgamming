@@ -15,4 +15,4 @@ function parseJwt(token) {
   }
 }
 
-module.exports = { parseJwt };
+//module.exports = { parseJwt };

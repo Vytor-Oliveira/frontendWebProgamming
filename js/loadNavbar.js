@@ -1,3 +1,4 @@
+// js/loadNavbar.js
 document.addEventListener("DOMContentLoaded", () => {
   fetch("../pages/navbar.html") // ajuste se necessário
     .then((res) => res.text())
@@ -39,8 +40,23 @@ document.addEventListener("DOMContentLoaded", () => {
         logoutLink.addEventListener("click", (e) => {
           e.preventDefault();
           localStorage.removeItem("token");
+          // Opcional: Limpar o carrinho ao fazer logout
+          if (typeof clearCart === "function") {
+            // Verifica se a função existe
+            clearCart();
+          }
           window.location.href = "../index.html"; // ou outra página de destino
         });
+      }
+
+      // ✅ Chama a função para atualizar o contador do carrinho ao carregar a navbar
+      if (typeof updateCartCounter === "function") {
+        // Verifica se a função existe
+        updateCartCounter();
+      } else {
+        console.warn(
+          "Função 'updateCartCounter' não encontrada. Verifique se 'cartUtils.js' está carregado corretamente."
+        );
       }
     })
     .catch((error) => console.error("Erro ao carregar a navbar:", error));

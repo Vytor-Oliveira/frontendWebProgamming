@@ -54,4 +54,4 @@ async function cadastrarUsuario({ nome, email, senha }) {
   return response.json();
 }
 
-module.exports = { cadastrarUsuario };
+//module.exports = { cadastrarUsuario };

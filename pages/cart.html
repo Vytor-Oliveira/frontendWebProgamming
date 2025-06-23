@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PuffWear - Meu Carrinho</title>
+    <link rel="stylesheet" href="../css/menu.css" />
+    <link rel="stylesheet" href="../css/cart.css" />
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
+
+    <div class="cart-container">
+      <h2>Meu Carrinho</h2>
+      <div id="cart-items-list" class="cart-items-list"></div>
+      <div class="cart-summary">
+        <p>Total do Carrinho: <span id="cart-total-price">R$ 0,00</span></p>
+        <button id="proceed-to-checkout-btn" class="btn checkout-btn">
+          Finalizar Compra
+        </button>
+        <button id="clear-cart-btn" class="btn clear-btn">
+          Limpar Carrinho
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/cartUtils.js"></script>
+    <script src="../js/loadNavbar.js"></script>
+    <script src="../js/cart.js"></script>
+  </body>
+</html>

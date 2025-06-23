@@ -71,7 +71,44 @@ nav ul li a:hover {
   /* Cor de destaque no hover */
 }
 
-/* Estilos para telas menores */
+/* Estilos para o contador do carrinho (MOVIDO DO NAVBAR.HTML) */
+.cart-icon-link {
+  position: relative;
+  display: flex;
+  /* Para alinhar o ícone e o contador */
+  align-items: center;
+  gap: 5px;
+  /* Espaçamento entre o ícone e o contador */
+}
+
+.cart-counter {
+  background-color: #f39c12;
+  /* Cor de destaque */
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.7em;
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  min-width: 18px;
+  /* Garante que o círculo seja visível mesmo com 1 dígito */
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  /* Sombra para destaque */
+  display: none;
+  /* Escondido por padrão, será exibido via JS se houver itens */
+}
+
+/* Ajustes para o ícone SVG */
+.cart-icon-link svg {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+  /* Alinha o ícone com o texto ou outros elementos */
+}
+
+/* Estilos para telas menores (mantidos) */
 @media (max-width: 768px) {
   .menu-toggle {
     display: flex;

@@ -1,39 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title id="product-title">PuffWear - Produto</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="product-title">PuffWear - Produto</title>
 
-  <!-- Estilo da página -->
-  <link rel="stylesheet" href="../css/product.css" />
-</head>
-<body>
+    <link rel="stylesheet" href="../css/product.css" />
+    <link rel="stylesheet" href="../css/menu.css" />
+  </head>
+  <body>
+    <div id="navbar-placeholder"></div>
 
-  <!-- Navbar será carregada dinamicamente aqui -->
-  <div id="navbar-placeholder"></div>
+    <div class="product-container">
+      <div class="product-image">
+        <img id="product-image" src="" alt="Imagem do Produto" />
+      </div>
+      <div class="product-details">
+        <h1 id="product-name">Produto</h1>
+        <p id="product-price" class="price">R$ 0,00</p>
 
-  <!-- Conteúdo do produto -->
-  <div class="product-container">
-    <div class="product-image">
-      <img id="product-image" src="" alt="Imagem do Produto" />
+        <label>Tamanhos Disponíveis:</label>
+        <div id="product-sizes" class="tamanhos"></div>
+
+        <p id="product-description" class="description">
+          Descrição do produto.
+        </p>
+
+        <button id="add-to-cart-btn" class="btn">Adicionar ao Carrinho</button>
+      </div>
     </div>
-    <div class="product-details">
-      <h1 id="product-name">Produto</h1>
-      <label for="size">Tamanhos:</label>
-      <div class="tamanhos" id="product-sizes"></div>
-      <p id="product-description" class="description">Descrição do produto.</p>
-      <button class="btn">Comprar Agora</button>
-    </div>
-  </div>
 
-  <!-- Rodapé -->
-  <footer>
-    <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
-  </footer>
+    <footer>
+      <p>&copy; 2025 Puff Wear. Todos os direitos reservados.</p>
+    </footer>
 
-  <!-- Scripts -->
-  <script src="../js/product.js"></script>
-  <script src="../js/loadNavbar.js"></script>
-</body>
+    <script src="../js/utils.js"></script>
+    <script src="../js/cartUtils.js"></script>
+    <script src="../js/loadNavbar.js"></script>
+    <script src="../js/product.js"></script>
+  </body>
 </html>

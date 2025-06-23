@@ -64,4 +64,4 @@ async function realizarLogin(email, senha) {
   return response.json();
 }
 
-module.exports = { realizarLogin };
+//module.exports = { realizarLogin };
