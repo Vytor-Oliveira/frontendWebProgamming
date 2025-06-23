@@ -1,51 +1,80 @@
-# Arquitetura do Sistema
+# Arquitetura e Tecnologias Escolhidas
 
-Optamos por uma arquitetura monolítica, onde front-end e back-end estão integrados em uma única aplicação. Essa abordagem simplifica o desenvolvimento inicial e a manutenção, sendo ideal para projetos de pequeno a médio porte.
+## Arquitetura do Sistema
 
-## Vantagens da Arquitetura Monolítica:
- - Desenvolvimento mais rápido e simples: O sistema é um único bloco, facilitando a implementação.
- - Facilidade de integração: Toda a lógica reside em um único repositório.
- - Custo reduzido: Sem necessidade de infraestrutura complexa para múltiplos microserviços.
+Adotamos uma **arquitetura distribuída**, em que o front-end e o back-end estão hospedados e mantidos em **repositórios separados**. Essa separação promove maior flexibilidade no desenvolvimento e na implantação, além de facilitar a escalabilidade e a manutenção dos serviços individualmente.
+
+### Hospedagem e Implantação
+
+- **Front-end:** Hospedado na [Vercel](https://vercel.com), com integração contínua e distribuição via CDN.
+- **Back-end:** Implantado na [Railway](https://railway.app), plataforma que facilita a gestão de aplicações Node.js, ambientes e variáveis.
+- **Banco de Dados:** Utilizamos PostgreSQL por meio da plataforma Supabase, que oferece gerenciamento completo, autenticação integrada e alta performance.
+
+---
 
 ## Justificativa das Tecnologias
 
-1. Node.js (Back-end)
+### 1. Node.js (Back-end)
 
- - Escolhemos Node.js devido ao seu desempenho e escalabilidade, especialmente para aplicações com alta interação do usuário.
-I/O não bloqueante: Ideal para operações intensivas de leitura e escrita.
- - Escalabilidade: Gerencia múltiplas conexões simultâneas de forma eficiente.
- - Ecossistema rico: Grande variedade de pacotes disponíveis no npm.
-  **Tecnologias utilizadas:**
- - Express.js: Framework para criação de APIs RESTful.
- - JWT: Biblioteca para autenticação segura.
+- Plataforma leve e eficiente, ideal para aplicações com alta carga de I/O.
+- Arquitetura baseada em eventos e I/O não bloqueante, permitindo a manipulação eficiente de múltiplas requisições simultâneas.
+- Ecossistema maduro com milhares de pacotes disponíveis via `npm`.
 
-2. MySQL (Banco de Dados)
+**Tecnologias utilizadas:**
 
-Optamos pelo MySQL por sua confiabilidade e suporte a transações complexas.
-Modelo Relacional: Ideal para armazenar informações estruturadas.
- - SQL: Facilita a manipulação e consulta de dados.
- - Escalabilidade e performance: Suporte a grandes volumes de dados.
-Uso no sistema:
- - Produtos: Nome, descrição, preço e categorias.
- - Usuários: Nome, e-mail e senha criptografada.
- - Transações: Registro de compras e pagamentos.
+- **Express.js:** Framework minimalista para construção de APIs RESTful.
+- **JWT:** Biblioteca para autenticação segura baseada em tokens.
 
-3. JWT - Autenticação
+---
 
-Utilizamos JWT para autenticação segura e escalável.
-Elimina necessidade de sessões no servidor.
-Tokens assinados digitalmente garantem integridade.
-Fluxo de autenticação:
- - Login: Usuário envia credenciais.
- - Geração do Token: Servidor valida e retorna um JWT.
- - Validação: Cliente envia token nas requisições subsequentes.
+### 2. PostgreSQL (via Supabase - Banco de Dados)
 
-4. Front-end: HTML, CSS, JavaScript
+Optamos por PostgreSQL, acessado por meio do Supabase, para garantir integridade, escalabilidade e facilidade de manutenção.
 
-Para o front-end, utilizamos tecnologias padrão:
- - HTML: Estrutura do conteúdo.
- - CSS: Estilização e responsividade.
- - JavaScript: Interatividade e comunicação assíncrona com o back-end.
-Ferramentas adicionais:
- - Bootstrap: Layout responsivo e estilizado.
- - Axios: Requisições HTTP assíncronas.
+**Motivos da escolha:**
+
+- Banco de dados relacional com suporte robusto a transações.
+- SQL como linguagem de consulta, facilitando integração e análise.
+- Supabase oferece segurança integrada, autenticação e painel de administração.
+
+**Utilização no sistema:**
+
+- **Produtos:** Nome, descrição, preço e categorias.
+- **Usuários:** Nome, e-mail e senha criptografada.
+
+---
+
+### 3. JWT - Autenticação
+
+JWT (JSON Web Token) é utilizado para autenticação segura, sem a necessidade de manter sessões no servidor.
+
+**Fluxo de autenticação:**
+
+1. O usuário realiza login com credenciais válidas.
+2. O servidor valida as credenciais e retorna um token JWT.
+3. O token é armazenado no cliente e enviado nas próximas requisições.
+4. O servidor valida o token para conceder acesso às rotas protegidas.
+
+**Vantagens:**
+
+- Escalabilidade: não depende de sessões no servidor.
+- Segurança: tokens assinados garantem integridade e autenticidade.
+
+---
+
+### 4. Front-end: HTML, CSS, JavaScript
+
+Utilizamos tecnologias web padrão, garantindo ampla compatibilidade e performance.
+
+**Estrutura tecnológica:**
+
+- **HTML:** Marcações semânticas e estruturadas.
+- **CSS:** Estilização com responsividade, utilizando Bootstrap.
+- **JavaScript:** Lógica de interação, integração com APIs e dinamismo da aplicação.
+
+**Bibliotecas adicionais:**
+
+- **Bootstrap:** Framework CSS para layout responsivo e componentes visuais prontos.
+- **Axios:** Cliente HTTP para comunicação assíncrona com o back-end.
+
+---

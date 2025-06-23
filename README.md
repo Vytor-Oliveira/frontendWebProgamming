@@ -3,19 +3,21 @@
 ## Tecnologias Utilizadas
 
 - Front-end: HTML, CSS, JavaScript
-- Back-end: Node.js, express
-- Banco de Dados: MySQL
+- Back-end: Node.js, Express
+- Banco de Dados: PostgreSQL (via Supabase)
+- Autenticação: JWT
+- Frameworks e Bibliotecas: Bootstrap, Axios
 
 ## Funcionalidades
 
 - Login e autenticação de usuários com JWT
 - Visualização e compra de produtos
-- CRUD de usuários e produtos
+- CRUD de produtos
 - Processamento de pagamentos
 
 ## Arquitetura
 
-O sistema segue uma arquitetura **monolítica**, com um único servidor gerenciando tanto o front-end quanto o back-end.
+O sistema é estruturado como uma **arquitetura distribuída**, com o front-end e o back-end em **repositórios separados**. Isso permite que cada parte seja desenvolvida, testada e implantada de forma independente.
 
 ## Documentação
 
